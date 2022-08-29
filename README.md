@@ -107,7 +107,7 @@ Below is a list of the required API's for the application.
 ]
 ```
 
- 
+  
 
 ## Going Above and Beyond the Requirements
 

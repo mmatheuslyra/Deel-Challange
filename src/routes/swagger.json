@@ -1,0 +1,203 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "Deel",
+      "description": "Backend Engineer (Node.js + AWS)",
+      "version": "v1"
+    },
+    "schemes": [
+      "http"
+    ],
+    "paths": {
+        "/contracts/{id}": {
+          "get": {
+            "summary": "Get contract by id",
+            "parameters": [
+              {
+                "in": "header",
+                "name": "profile_id",
+                "required": true,
+                "type": "integer"
+              },
+              {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "type": "integer"
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "OK"
+              },
+              "401": {
+                "description": "Unauthorized"
+              }
+            }
+          }
+        },
+        "/contracts": {
+          "get": {
+            "summary": "Get user contracts that are not terminated",
+            "parameters": [
+              {
+                "in": "header",
+                "name": "profile_id",
+                "required": true,
+                "type": "integer"
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "OK"
+              }
+            }
+          }
+        },
+        "/jobs/unpaid": {
+          "get": {
+            "summary": "Get unpaid jobs only for active contracts",
+            "parameters": [
+              {
+                "in": "header",
+                "name": "profile_id",
+                "required": true,
+                "type": "integer"
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "OK"
+              }
+            }
+          }
+        },
+        "/jobs/{id}/pay": {
+          "post": {
+            "summary": "Jobs pay by id",
+            "parameters": [
+              {
+                "in": "header",
+                "name": "profile_id",
+                "required": true,
+                "type": "integer"
+              },
+              {
+                "in": "path",
+                "name": "id",
+                "required": true,
+                "type": "integer"
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "OK"
+              },
+              "409": {
+                "description": "Job is already paid"
+              },
+              "404": {
+                "description": "Job not found"
+              },
+              "400": {
+                "description": "Insufficient funds"
+              }
+            }
+          }
+        },
+        "/balances/deposit/{userId}": {
+          "post": {
+            "summary": "Deposit client balance",
+            "parameters": [
+              {
+                "in": "path",
+                "name": "userId",
+                "required": true,
+                "type": "integer"
+              },
+              {
+                "in": "body",
+                "name": "amount",
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "amount": {
+                      "type": "number"
+                    }
+                  }
+                },
+                "required": true
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "OK"
+              },
+              "400": {
+                "description": "Deposit exceeds the threshold"
+              }
+            }
+          }
+        },
+        "/admin/best-profession": {
+          "get": {
+            "summary": "Admin: best profession",
+            "parameters": [
+              {
+                "in": "query",
+                "name": "start",
+                "type": "string",
+                "required": true,
+                "default": "2022-08-28T01:01:00.412Z"
+              },
+              {
+                "in": "query",
+                "name": "end",
+                "type": "string",
+                "required": true,
+                "default": "2022-09-28T18:14:18.412Z"
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "OK"
+              }
+            }
+          }
+        },
+        "/admin/best-clients": {
+          "get": {
+            "summary": "Admin: best clients",
+            "parameters": [
+              {
+                "in": "query",
+                "name": "start",
+                "type": "string",
+                "required": true,
+                "default": "2015-08-28T01:01:00.412Z"
+              },
+              {
+                "in": "query",
+                "name": "end",
+                "type": "string",
+                "required": true,
+                "default": "2022-09-28T18:14:18.412Z"
+              },
+              {
+                "in": "query",
+                "name": "limit",
+                "type": "integer",
+                "required": false,
+                "default": 2
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "OK"
+              }
+            }
+          }
+        }
+      }
+  }
+  
