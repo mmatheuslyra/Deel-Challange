@@ -39,7 +39,7 @@ describe('Balances', () => {
           price: 200,
           ContractId: 1,
           paid: true,
-          paymentDate: '2020-08-15T19:11:26.737Z',
+          paymentDate: '2021-08-15T19:11:26.737Z',
         }),
         Job.create({
           id: 2,

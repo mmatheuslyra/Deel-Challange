@@ -105,8 +105,8 @@ describe('Admin', () => {
     it('should return null if there are no jobs within given time range', async () => {
       const { statusCode, body } = await request(app)
         .get('/admin/best-profession')
-        .query({ start: '2021-08-10T09:00:00.000Z' })
-        .query({ end: '2021-08-16T23:59:59.000Z' });
+        .query({ start: '2022-08-10T09:00:00.000Z' })
+        .query({ end: '2022-08-16T23:59:59.000Z' });
 
       expect(statusCode).toEqual(200);
       expect(body).toBeNull();
@@ -270,8 +270,8 @@ describe('Admin', () => {
     it('should return [] if there are no jobs within given time range', async () => {
       const { statusCode, body } = await request(app)
         .get('/admin/best-clients')
-        .query({ start: '2021-08-10T09:00:00.000Z' })
-        .query({ end: '2021-08-16T23:59:59.000Z' });
+        .query({ start: '2022-08-10T09:00:00.000Z' })
+        .query({ end: '2022-08-16T23:59:59.000Z' });
 
       expect(statusCode).toEqual(200);
       expect(body).toHaveLength(0);
